@@ -173,7 +173,6 @@
       var board = this.rows();
       var col = minorDiagonalColumnIndexAtFirstRow;
       var n = this.get('n');
-      console.log(board);
 
       for (var row = 0; row < n; row++){
         counter += board[row][col];
@@ -182,7 +181,6 @@
         }
         col--;
       }
-      console.log(counter);
       return counter > 1;
     },
 
