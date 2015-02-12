@@ -141,7 +141,9 @@
       var n = this.get('n');
 
       for (var row = 0; row < n; row++){
-        counter += board[row][col];
+        if (col >= 0) {
+          counter += board[row][col];
+        }
         if(col===n-1){
           break;
         }
@@ -152,9 +154,10 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      var row = this.get(0);
+      var n = this.get('n');
 
-      for(var col = 0; col < row.length; col++){
+      for(var col = 2-n; col < n; col++){
+
         if(this.hasMajorDiagonalConflictAt(col)){
           return true;
         }
@@ -175,7 +178,9 @@
       var n = this.get('n');
 
       for (var row = 0; row < n; row++){
-        counter += board[row][col];
+        if (col < 4) {
+          counter += board[row][col];
+        }
         if(col===0){
           break;
         }
@@ -186,9 +191,8 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      var row = this.get(0);
       var n = this.get('n');
-      for(var col = n-1; col > 0; col--){
+      for(var col = n+1; col >= 0; col--){
         if(this.hasMinorDiagonalConflictAt(col)){
           return true;
         }
